@@ -10,14 +10,14 @@ class AuthWapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, State) {
-        if (State is AuthInitial || State is AuthLoading) {
-          return Scaffold(body: Center(child: CircularProgressIndicator()));
+      builder: (context, state) {
+        if (state is AuthInitial || state is AuthLoading) {
+          return SplashScreen();
         }
-        if (State is AuthAuthenticated) {
-          return Scaffold(body: Center(child: Text('Home page')));
+        if (state is AuthAuthenticated) {
+          return  HomeScreen();
         }
-        return LoginPage();
+        return const LoginPage();
       },
     );
   }

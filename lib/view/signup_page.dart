@@ -4,14 +4,15 @@ import 'package:flutter_application_29/view/auth_event.dart';
 import 'package:flutter_application_29/view/auth_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  final _nameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   bool _obscure = true;
@@ -19,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
+    _nameCtrl.dispose();
     _emailCtrl.dispose();
     _passCtrl.dispose();
     super.dispose();
@@ -33,6 +35,12 @@ class _LoginPageState extends State<LoginPage> {
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
         }
+        if (state is AuthAuthenticated) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => SuccessPage()),
+          );
+        }
       },
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -44,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(height: 24),
                 const Text(
-                  'Welcome Back',
+                  'Create an Account',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -57,11 +65,15 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 13, color: Colors.grey),
                 ),
                 const SizedBox(height: 36),
+                _buildLabel('Full name'),
+                const SizedBox(height: 8),
+                _buildTextField(controller: _nameCtrl, hint: 'Brandone Louis'),
+                const SizedBox(height: 16),
                 _buildLabel('Email'),
                 const SizedBox(height: 8),
                 _buildTextField(
                   controller: _emailCtrl,
-                  hint: 'Brandone.louis@gmail.com',
+                  hint: 'brandone@gmail.com',
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16),
@@ -140,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: state is AuthLoading
                             ? null
                             : () => context.read<AuthBloc>().add(
-                                AuthSignInRequested(
+                                AuthSignUpRequested(
                                   _emailCtrl.text.trim(),
                                   _passCtrl.text,
                                 ),
@@ -150,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.white,
                               )
                             : const Text(
-                                'LOGIN',
+                                'SIGN UP',
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
@@ -171,12 +183,9 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => SignUpPage()),
-                      ),
+                      onTap: () => Navigator.pop(context),
                       child: const Text(
-                        'Sign up',
+                        'Sign in',
                         style: TextStyle(
                           fontSize: 13,
                           color: Color(0xFFFF6B35),
