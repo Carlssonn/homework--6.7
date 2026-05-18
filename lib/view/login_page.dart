@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_29/view/auth_bloc.dart';
 import 'package:flutter_application_29/view/auth_event.dart';
 import 'package:flutter_application_29/view/auth_state.dart';
+import 'package:flutter_application_29/view/signup_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -43,18 +44,22 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 24),
-                const Text(
-                  'Welcome Back',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A1A6E),
+                Center(
+                  child: const Text(
+                    'Welcome Back',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1A1A6E),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                Center(
+                  child: const Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing \n                    elit, sed do eiusmod tempor.',
+                    style: TextStyle(fontSize: 13, color: Colors.grey),
+                  ),
                 ),
                 const SizedBox(height: 36),
                 _buildLabel('Email'),

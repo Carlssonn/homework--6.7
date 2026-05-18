@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_29/view/login_page.dart';
 import 'package:flutter_application_29/view/auth_bloc.dart';
 import 'package:flutter_application_29/view/auth_state.dart';
-import 'package:flutter_application_29/view/login_page.dart';
+import 'package:flutter_application_29/view/home_screen.dart';
+import 'package:flutter_application_29/view/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthWapper extends StatelessWidget {
@@ -15,7 +17,7 @@ class AuthWapper extends StatelessWidget {
           return SplashScreen();
         }
         if (state is AuthAuthenticated) {
-          return  HomeScreen();
+          return HomeScreen();
         }
         return const LoginPage();
       },

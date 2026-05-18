@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_29/view/auth_bloc.dart';
 import 'package:flutter_application_29/view/auth_event.dart';
 import 'package:flutter_application_29/view/auth_state.dart';
+import 'package:flutter_application_29/view/success_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -51,18 +52,22 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 24),
-                const Text(
-                  'Create an Account',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A1A6E),
+                Center(
+                  child: const Text(
+                    'Create an Account',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1A1A6E),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                Center(
+                  child: const Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing \n                    elit, sed do eiusmod tempor.',
+                    style: TextStyle(fontSize: 13, color: Colors.grey),
+                  ),
                 ),
                 const SizedBox(height: 36),
                 _buildLabel('Full name'),

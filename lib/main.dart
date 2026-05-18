@@ -4,7 +4,7 @@ import 'package:flutter_application_29/firebase_options.dart';
 import 'package:flutter_application_29/repo/user_reoasitory.dart';
 import 'package:flutter_application_29/view/auth_bloc.dart';
 import 'package:flutter_application_29/view/auth_event.dart';
-import 'package:flutter_application_29/view/auth_wapper.dart';
+import 'package:flutter_application_29/view/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
@@ -26,6 +26,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: AuthWapper());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }
