@@ -2,74 +2,103 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_29/view/login_page.dart';
 
 class SplashScreen2 extends StatelessWidget {
-  SplashScreen2({super.key});
+  const SplashScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Image.asset(
-                  'assets/images/2.png',
-                  width: 300,
-                  height: 300,
-                  fit: BoxFit.contain,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'Jobspot',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF1B0061),
+                  ),
                 ),
               ),
-              const SizedBox(height: 32),
+            ),
 
-              const Text.rich(
-                TextSpan(
-                  text: 'Find Your ',
-                  style: TextStyle(
-                    fontSize: 44,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+            Expanded(
+              flex: 5,
+              child: Center(
+                child: Image.asset('assets/images/2.png', fit: BoxFit.contain),
+              ),
+            ),
+
+            Expanded(
+              flex: 4,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextSpan(
-                      text: 'Dream Job',
-                      style: TextStyle(color: Color(0xFFF4A100)),
+                    Text.rich(
+                      TextSpan(
+                        text: 'Find Your ',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                          height: 1.2,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Dream Job',
+                            style: TextStyle(color: Color(0xFFF4A100)),
+                          ),
+                          TextSpan(text: ' Here!'),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    TextSpan(text: ' Here!'),
+
+                    const SizedBox(height: 12),
+
+                    Text(
+                      'Explore all the most exciting job roles based\non your interest and study major.',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => LoginPage()),
+                        );
+                      },
+                      child: Container(
+                        width: 56,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1B0061),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.arrow_forward, color: Colors.white),
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
                   ],
                 ),
-                textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16),
-
-              Text(
-                'Explore all the most exciting job roles \n based on your interest and study major.',
-                style: TextStyle(fontSize: 14, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 50),
-
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF1B0061),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(Icons.arrow_forward, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
